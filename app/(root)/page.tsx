@@ -7,17 +7,26 @@ import {
 import { getCurrentUser } from "@/lib/actions/auth-actions";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 export default async function HomePage() {
   const user = await getCurrentUser();
 
+  if (!user || !user.id) {
+    toast.error("Kindly sign in again");
+    redirect("/sign-in");
+  }
+
   const [userInterviews, latestInterviews] = await Promise.all([
-    await getInterviewsByUserId(user?.id!),
-    await getLatestInterviews({ userId: user?.id! }),
+    await getInterviewsByUserId(user.id),
+    await getLatestInterviews({ userId: user.id }),
   ]);
 
-  const pastInterviews = userInterviews?.length > 0;
-  const upcomingInterviews = latestInterviews?.length > 0;
+  const pastInterviews =
+    Array.isArray(userInterviews) && userInterviews.length > 0;
+  const upcomingInterviews =
+    Array.isArray(latestInterviews) && latestInterviews.length > 0;
 
   return (
     <>

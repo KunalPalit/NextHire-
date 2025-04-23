@@ -6,7 +6,6 @@ export default async function InterviewPage() {
   return (
     <>
       <h3>Interview Generation</h3>
-      {/* <Agent userName={user?.name} userId={user?.id} type="generate" /> */}
       <Agent
         userName={user?.name ?? "Guest"}
         userId={user?.id}

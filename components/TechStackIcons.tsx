@@ -2,7 +2,7 @@ import React from "react";
 import { cn, getTechLogos } from "@/lib/utils";
 import Image from "next/image";
 
-const TechStackIcons = async ({ techStack }: TechIconProps) => {
+export default async function TechStackIcons({ techStack }: TechIconProps) {
   const techIcons = await getTechLogos(techStack);
 
   return (
@@ -27,5 +27,4 @@ const TechStackIcons = async ({ techStack }: TechIconProps) => {
       ))}
     </div>
   );
-};
-export default TechStackIcons;
+}

@@ -9,17 +9,23 @@ import {
 } from "@/lib/actions/general-actions";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/actions/auth-actions";
+import { toast } from "sonner";
 
-const Page = async ({ params }: RouteParams) => {
+export default async function FeedbackPage({ params }: RouteParams) {
   const { id } = await params;
   const user = await getCurrentUser();
+
+  if (!user || !user.id) {
+    toast.error("No feedback at the moment");
+    redirect("/");
+  }
 
   const interview = await getInterviewById(id);
   if (!interview) redirect("/");
 
   const feedback = await getFeedbackByInterviewId({
     interviewId: id,
-    userId: user?.id!,
+    userId: user.id,
   });
 
   console.log(feedback);
@@ -113,5 +119,4 @@ const Page = async ({ params }: RouteParams) => {
       </div>
     </section>
   );
-};
-export default Page;
+}

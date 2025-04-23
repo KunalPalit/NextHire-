@@ -6,14 +6,14 @@ import Link from "next/link";
 import TechStackIcons from "./TechStackIcons";
 import { getFeedbackByInterviewId } from "@/lib/actions/general-actions";
 
-const InterviewCard = async ({
+export default async function InterviewCard({
   id,
   userId,
   role,
   type,
   techstack,
   createdAt,
-}: InterviewCardProps) => {
+}: InterviewCardProps) {
   const feedback =
     userId && id
       ? await getFeedbackByInterviewId({ interviewId: id, userId })
@@ -78,5 +78,4 @@ const InterviewCard = async ({
       </div>
     </div>
   );
-};
-export default InterviewCard;
+}

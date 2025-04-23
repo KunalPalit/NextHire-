@@ -6,7 +6,7 @@ import { getRandomInterviewCover } from "@/lib/utils";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-export default async function InterviewDetails({ params }: RouteParams) {
+export default async function InterviewDetailsPage({ params }: RouteParams) {
   const { id } = await params;
   const user = await getCurrentUser();
   const interview = await getInterviewById(id);
