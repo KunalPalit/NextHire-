@@ -4,7 +4,7 @@ import {
   getInterviewsByUserId,
   getLatestInterviews,
 } from "@/lib/actions/general-actions";
-import { getCurrentUser } from "@/lib/actions/signup-actions";
+import { getCurrentUser } from "@/lib/actions/auth-actions";
 import Image from "next/image";
 import Link from "next/link";
 

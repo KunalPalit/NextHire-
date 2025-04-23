@@ -1,5 +1,5 @@
 import Agent from "@/components/Agent";
-import { getCurrentUser } from "@/lib/actions/signup-actions";
+import { getCurrentUser } from "@/lib/actions/auth-actions";
 
 export default async function InterviewPage() {
   const user = await getCurrentUser();

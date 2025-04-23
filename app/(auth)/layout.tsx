@@ -1,4 +1,4 @@
-import { isAuthenticated } from "@/lib/actions/signup-actions";
+import { isAuthenticated } from "@/lib/actions/auth-actions";
 import { redirect } from "next/navigation";
 import { type ReactNode } from "react";
 

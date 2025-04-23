@@ -1,4 +1,4 @@
-import { isAuthenticated } from "@/lib/actions/signup-actions";
+import { isAuthenticated } from "@/lib/actions/auth-actions";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
