@@ -5,13 +5,17 @@ import { getCurrentUser } from "@/lib/actions/auth-actions";
 import { getRandomInterviewCover } from "@/lib/utils";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 export default async function InterviewDetailsPage({ params }: RouteParams) {
   const { id } = await params;
   const user = await getCurrentUser();
   const interview = await getInterviewById(id);
 
-  if (!interview) redirect("/");
+  if (!interview) {
+    toast.error("No Interview Found");
+    redirect("/");
+  }
 
   return (
     <>
